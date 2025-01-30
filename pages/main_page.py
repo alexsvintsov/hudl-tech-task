@@ -66,12 +66,6 @@ class MainPage:
         WebDriverWait(self.driver, 10).until(
             ec.title_contains("Hudl")
         )
-        WebDriverWait(self.driver, 10).until(
-            ec.presence_of_element_located((
-                self.main_nav_locator["search_by"],
-                self.main_nav_locator["locator"]
-            ))
-        )
 
     def get_main_menu(self) -> WebElement:
         main_nemu = self.driver.find_element(
@@ -80,17 +74,19 @@ class MainPage:
         )
         return main_nemu
 
-    def navigate_to_hudl(self) -> None:
-        # click menu
-        # check that hudl login is displayed
-        # click hudl login
-        # for partners, wait for a helper block
+    def get_login(self, locator) -> WebElement:
         login = self.driver.find_element(
-            self.hudl_login_locator["search_by"],
-            self.hudl_login_locator["locator"]
+            locator["search_by"],
+            locator["locator"]
         )
-        login.click()
-        WebDriverWait(self.driver, 10).until(ec.url_changes("https://identity.hudl.com/"))
+        return login
 
-    def navigate_to_wyscout(self) -> None:
-        return
+    def go_to_login_page(self, locator: dict) -> None:
+        # open main page
+        self.open_main_page()
+        # open menu
+        main_menu = self.get_main_menu()
+        main_menu.click()
+        # go to login page
+        login = self.get_login(locator)
+        login.click()
