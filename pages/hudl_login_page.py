@@ -7,18 +7,18 @@ class HudlLoginPage:
     home_url = "https://www.hudl.com/home"
 
     email_locator = {
-        "search_by": By.XPATH,
-        "locator": "//input[contains(@id, 'username')]"
-    }
-
-    submit_button_locator = {
-        "search_by": By.XPATH,
-        "locator": "//button[@type='submit']"
+        "search_by": By.ID,
+        "locator": "username"
     }
 
     password_locator = {
         "search_by": By.ID,
         "locator": "password"
+    }
+
+    submit_button_locator = {
+        "search_by": By.XPATH,
+        "locator": "//button[@type='submit']"
     }
 
     invalid_credentials_locator = {
