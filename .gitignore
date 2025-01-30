@@ -1,4 +1,7 @@
 .idea
+.DS_Store
 __pycache__
 pages/__pycache__
 credentials.json
+allure-report/
+allure-results/
