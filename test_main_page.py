@@ -1,10 +1,8 @@
-import time
 import pytest
-
 from pages.main_page import *
 from pages.hudl_login_page import *
 
-class TestLoginHudl:
+class TestMainPage:
     @pytest.mark.parametrize("login_locator, partner_name",[
         (MainPage.hudl_login_locator, "Hudl"),
         (MainPage.wyscout_login_locator, "Wyscout"),
