@@ -8,43 +8,43 @@ class MainPage:
     driver = None
 
     main_nav_locator = {
-        "search_by": By.CLASS_NAME,
-        "locator": "mainnav__item__disclosure"
+        "search_by": By.CSS_SELECTOR,
+        "locator": "[data-qa-id='login-select']"
     }
 
     hudl_login_locator = {
-        "search_by": By.XPATH,
-        "locator": "//a[@data-qa-id='login-hudl']"
+        "search_by": By.CSS_SELECTOR,
+        "locator": "[data-qa-id='login-hudl']"
     }
 
     wyscout_login_locator = {
-        "search_by": By.XPATH,
-        "locator": "//a[@data-qa-id='login-wyscout']"
+        "search_by": By.CSS_SELECTOR,
+        "locator": "[data-qa-id='login-wyscout']"
     }
 
     volleymetrics_login_locator = {
-        "search_by": By.XPATH,
-        "locator": "//a[@data-qa-id='login-volleymetrics']"
+        "search_by": By.CSS_SELECTOR,
+        "locator": "[data-qa-id='login-volleymetrics']"
     }
 
     wimu_login_locator = {
-        "search_by": By.XPATH,
-        "locator": "//a[@data-qa-id='login-wimu']"
+        "search_by": By.CSS_SELECTOR,
+        "locator": "[data-qa-id='login-wimu']"
     }
 
     instat_basketball_login_locator = {
-        "search_by": By.XPATH,
-        "locator": "//a[@data-qa-id='login-instat-basketball']"
+        "search_by": By.CSS_SELECTOR,
+        "locator": "[data-qa-id='login-instat-basketball']"
     }
 
     instat_icehockey_login_locator = {
-        "search_by": By.XPATH,
-        "locator": "//a[@data-qa-id='login-instat-icehockey']"
+        "search_by": By.CSS_SELECTOR,
+        "locator": "[data-qa-id='login-instat-icehockey']"
     }
 
     iq_login_locator = {
-        "search_by": By.XPATH,
-        "locator": "//a[@data-qa-id='login-iq']"
+        "search_by": By.CSS_SELECTOR,
+        "locator": "[data-qa-id='login-iq']"
     }
 
     # click on every login
@@ -81,12 +81,21 @@ class MainPage:
         )
         return login
 
-    def go_to_login_page(self, locator: dict) -> None:
+    def go_to_login_page(self, locator: dict, url: str) -> None:
         # open main page
         self.open_main_page()
         # open menu
         main_menu = self.get_main_menu()
         main_menu.click()
+        WebDriverWait(self.driver, 5).until(
+            ec.visibility_of_element_located((
+                locator["search_by"],
+                locator["locator"]
+            ))
+        )
         # go to login page
         login = self.get_login(locator)
         login.click()
+        WebDriverWait(self.driver, 30).until(
+            lambda wait_loading: url in self.driver.current_url
+        )

@@ -5,14 +5,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
 class HudlLoginPage:
+    url = "https://identity.hudl.com/"
+
     email_locator = {
         "search_by": By.XPATH,
         "locator": "//input[contains(@id, 'username')]"
-    }
-
-    add_task_title_locator = {
-        "search_by": By.XPATH,
-        "locator": "//div[@id='add']//input[contains(@placeholder, 'Task title')]"
     }
 
     submit_email_locator = {
