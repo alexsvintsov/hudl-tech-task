@@ -16,7 +16,7 @@ class TestMainPage:
         MainPage.instat_icehockey_login_locator,
         MainPage.iq_login_locator
     ])
-    def notest_main_page_login_options(self, driver: webdriver, login_locator: dict):
+    def test_main_page_login_options(self, driver: webdriver, login_locator: dict):
         # open main page
         main_page = MainPage(driver)
         main_page.open_main_page()
