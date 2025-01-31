@@ -13,7 +13,7 @@ pip3 install -r requirements.txt
 brew install allure
 ```
 
-* To work properly, the tests also require the **credentials.txt** file to be put in the root directory of the test project. It must contain the following data in JSON format:
+* To work properly, the tests also require the **credentials.json** file to be put in the root directory of the test project. It must contain the following data in JSON format:
 
 ```
 {
