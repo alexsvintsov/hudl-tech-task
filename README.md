@@ -41,3 +41,9 @@ pytest
 pytest --browser=chrome
 pytest --browser=firefox
 ```
+## Potential improvements
+
+1. Move direct WebDriver calls from tests to pages so that PageObject model is consistent
+2. Add/extend failure messages, so that it is easier to understand why a test fails
+3. Add tests for mobile web (mobile phone/tablet screens) versions of the pages
+4. Split some tests into more tests to reduce the amount of steps
