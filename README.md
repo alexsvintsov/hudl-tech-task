@@ -41,6 +41,13 @@ pytest
 pytest --browser=chrome
 pytest --browser=firefox
 ```
+
+4. To check the previously generated Allure report, run the following command in the root directory of the project:
+```
+allure serve allure-results
+```
+A report is already attached to the project, so the previous test results can be checked straight away.
+
 ## Potential improvements
 
 1. Move direct WebDriver calls from tests to pages so that PageObject model is consistent
